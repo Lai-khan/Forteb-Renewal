@@ -1,20 +1,22 @@
 import { Entity, Column, PrimaryColumn } from 'typeorm';
-import { OAuth } from '../enum/oauth.enum';
 
 @Entity()
 export class User {
   @PrimaryColumn()
-  id: number;
-
-  @Column()
-  name: string;
+  id: string;
 
   @Column()
   email: string;
 
-  @Column({ type: 'enum', enum: OAuth })
-  oauth: OAuth;
+  @Column()
+  password: string;
+
+  @Column()
+  salt: string;
 
   @Column()
   created_at: Date;
+
+  @Column()
+  updated_at: Date;
 }

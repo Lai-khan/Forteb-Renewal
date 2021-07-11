@@ -6,7 +6,7 @@ import { UserService } from './user.service';
 class MockRepository {
   async find() {
     const user: User = new User();
-    user.id = 1;
+    user.id = 'naver';
     return user;
   }
 }
@@ -38,7 +38,7 @@ describe('UserService', () => {
       expect(result).toBeDefined();
       expect(result).toBeInstanceOf(Promise);
       result.then(user => {
-        expect(user.id).toEqual(1);
+        expect(user.id).toEqual('naver');
       });
     });
   });
