@@ -34,7 +34,7 @@ describe('UserService', () => {
 
   describe('getAll', () => {
     it('should return all users', () => {
-      const result = service.getUserById(1);
+      const result = service.getUserById('naver');
       expect(result).toBeDefined();
       expect(result).toBeInstanceOf(Promise);
       result.then(user => {

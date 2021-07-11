@@ -10,9 +10,23 @@ export class UserService {
     private readonly userRepository: Repository<User>,
   ) {}
 
-  async getUserById(id: number): Promise<User> {
+  async getUserById(id: string): Promise<User> {
     return await this.userRepository.findOne({
       where: { id: id },
     });
+  }
+
+  async saveUser(user: User): Promise<void> {
+    await this.userRepository.save(user);
+  }
+
+  async updatePassword(user: User, newPassword: string): Promise<void> {
+    // todo: make new encoded password with salt
+    user.password = newPassword;
+    this.saveUser(user);
+  }
+
+  async deleteUser(id: string): Promise<void> {
+    await this.userRepository.delete({ id: id });
   }
 }
