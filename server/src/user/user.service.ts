@@ -21,7 +21,6 @@ export class UserService {
   }
 
   async updatePassword(user: User, newPassword: string): Promise<void> {
-    // todo: make new encoded password with salt
     user.password = newPassword;
     this.saveUser(user);
   }
